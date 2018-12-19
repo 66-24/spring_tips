@@ -24,7 +24,6 @@ public class BeanConfiguration implements SchedulingConfigurer {
     @Bean(destroyMethod = "shutdownNow")
     public ScheduledExecutorService taskExecutor() {
         return ExceptionHandlingThreadPoolExecutor.newFixedThreadPool(2,threadFactory());
-//        return Executors.newScheduledThreadPool(2,threadFactory());
     }
 
     @Bean
@@ -35,6 +34,5 @@ public class BeanConfiguration implements SchedulingConfigurer {
     @Bean
     ThreadFactory threadFactory() {
         return new com.starlux.custom_exectors.ThreadFactory("greeter");
-//        return Executors.defaultThreadFactory();
     }
 }

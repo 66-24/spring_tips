@@ -25,7 +25,10 @@ class ExceptionHandlingThreadPoolExecutor extends java.util.concurrent.Scheduled
     @Override
     protected void afterExecute(Runnable r, Throwable t) {
         super.afterExecute(r, t);
-//        https://bugs.java.com/bugdatabase/view_bug.do?bug_id=7146994
+/*
+        https://bugs.java.com/bugdatabase/view_bug.do?bug_id=7146994
+
+*/
         if (t == null && r instanceof Future<?> &&  ((Future<?>)r).isDone()) {
             try {
                 Object result = ((Future<?>) r).get();
@@ -40,6 +43,7 @@ class ExceptionHandlingThreadPoolExecutor extends java.util.concurrent.Scheduled
                 log.error("Something went wrong", e);
             }
         }
+        /*Use DropWizard */
         if (t != null) {
             System.out.println(t);
         }

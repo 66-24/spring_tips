@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     private static CountDownLatch appExitLatch = new CountDownLatch(1);
     public static void main(String[] args) throws InterruptedException {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+        new AnnotationConfigApplicationContext(BeanConfiguration.class);
         appExitLatch.await(10, TimeUnit.SECONDS);
         log.info("~ The End ~");
     }
